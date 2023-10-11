@@ -1,17 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Navbar = props => {
+const Navbar = () => {
   return (
-    <nav>
-      <Link to='/'>Home</Link>
-      <Link to='/teste'>Teste</Link>
-
+    <nav
+      className='w-100 h-1/6 bg-black flex items-center'>
+      <Link
+        className='text-blue-950'
+        to='/'>Home</Link>
+      <Link
+        className='text-blue-950'
+        to='/teste'>Teste</Link>
     </nav>
-  )
-}
-
-Navbar.propTypes = {}
+  );
+};
 
 export default Navbar;

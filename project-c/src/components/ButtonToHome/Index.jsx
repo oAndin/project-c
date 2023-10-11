@@ -1,8 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const ButtonToHome = props => {
+const ButtonToHome = () => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -11,11 +10,11 @@ const ButtonToHome = props => {
   }
   return (
     <>
-      <button onClick={handleNavigate}>Voltar para a página principal!</button>
+      <button
+        className='bg-black text-white'
+        onClick={handleNavigate}>Voltar para a página principal!</button>
     </>
-  )
-}
+  );
+};
 
-ButtonToHome.propTypes = {}
-
-export default ButtonToHome
+export default ButtonToHome;

@@ -5,8 +5,12 @@ import Navbar from './components/Navbar/Navbar';
 const App = () => {
   return (
     <>
-      <Navbar />
-      <Outlet />
+      <div
+        className='w-screen h-screen'>
+        <Navbar />
+        <Outlet />
+        <Navbar />
+      </div>
     </>
   )
 }
