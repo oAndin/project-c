@@ -14,4 +14,4 @@ const Navbar = props => {
 
 Navbar.propTypes = {}
 
-export default Navbar
+export default Navbar;
