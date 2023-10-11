@@ -1,10 +1,10 @@
 import React from 'react'
-import Navbar from '../Navbar/Navbar'
+import Navbar from '../Navbar/Index'
 
 const Footer = () => {
   return (
     <>
-      <footer>
+      <footer className='fixed bottom-0 w-full'>
         <Navbar />
       </footer>
     </>

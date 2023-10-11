@@ -7,6 +7,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from './routes/Home/Index';
 import Error from './routes/Error/Error';
 import Test from './routes/Test/Test';
+import PaginaDois from './routes/PaginaDois/Index';
 
 const router = createBrowserRouter(
   [
@@ -21,7 +22,11 @@ const router = createBrowserRouter(
         {
           path: '/teste',
           element: <Test />
-        }
+        },
+        {
+          path: '/pagina_dois',
+          element: <PaginaDois />
+        },
       ],
       errorElement: <Error />
     }
