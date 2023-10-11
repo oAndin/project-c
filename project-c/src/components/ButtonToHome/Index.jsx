@@ -10,7 +10,9 @@ const ButtonToHome = () => {
   }
   return (
     <>
-      <button onClick={handleNavigate}>Voltar para a página principal!</button>
+      <button
+        className='bg-black text-white'
+        onClick={handleNavigate}>Voltar para a página principal!</button>
     </>
   );
 };
