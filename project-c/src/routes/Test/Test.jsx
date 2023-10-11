@@ -1,8 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Navbar from '../../components/Navbar/Navbar'
+import React from 'react';
 
-const Test = props => {
+const Test = () => {
   return (
     <>
       <h1>This is just a simple test</h1>
@@ -10,9 +8,7 @@ const Test = props => {
       <h6>Move along!</h6>
       <p>Thank you! :)</p>
     </>
-  )
-}
+  );
+};
 
-Test.propTypes = {}
-
-export default Test
+export default Test;
