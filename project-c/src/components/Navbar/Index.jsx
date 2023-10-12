@@ -4,16 +4,22 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   return (
     <nav
-      className='w-100 h-24 bg-black flex items-center p-5 gap-3'>
+      className='flex gap-5'>
       <Link
         className='text-white'
         to='/'>Home</Link>
       <Link
         className='text-white'
-        to='/teste'>Teste</Link>
+        to='/new_project'>New Project</Link>
       <Link
         className='text-white'
-        to='/pagina_dois'>Página dois</Link>
+        to='/teste'>Test</Link>
+      <Link
+        className='text-white'
+        to='/who_we_are'>Who we are</Link>
+      <Link
+        className='text-white'
+        to='/contacts'>Contacts</Link>
     </nav>
   );
 };

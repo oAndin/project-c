@@ -4,18 +4,13 @@ import Footer from './components/Footer/Index';
 import Header from './components/Header/Index';
 
 const App = () => {
-  const nome = [
-    {
-      nome: 'Andherson'
-    }
-  ];
   return (
     <>
       <div
         className='w-screen h-screen bg-pattern'>
-        <Header />
+        <Header/>
         <Outlet />
-        <Footer />
+        <Footer/>
       </div>
     </>
   )
