@@ -11,8 +11,8 @@ const ButtonToHome = () => {
   return (
     <>
       <button
-        className='bg-black text-white'
-        onClick={handleNavigate}>Voltar para a página principal!</button>
+        className='bg-black text-white rounded p-1'
+        onClick={handleNavigate}>Go back to the home page</button>
     </>
   );
 };

@@ -9,23 +9,27 @@ import { AiOutlineGithub } from 'react-icons/ai'
 const Footer = () => {
   return (
     <>
-      <footer className='fixed bottom-0 w-full px-10 flex flex-col justify-around bg-dark-gray p-5'>
+      <footer className='static bottom-0 w-full px-10 flex flex-col justify-around bg-dark-gray p-5'>
         <div
-          className='flex justify-around'>
+          className='flex justify-around items-center'>
           <div className='w-[15%]'>
             <Logo />
-            <p className='text-sm'>Lorem ipsum dolor sit amet consectetur.</p>
+            <p className='text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, facere reprehenderit! Quas omnis, quaerat, dolores nisi autem nobis architecto ducimus impedit magni quo asperiores obcaecati culpa, amet cum sapiente perspiciatis.</p>
           </div>
           <CollumNavbar />
+          <div id='map' className='flex flex-col justify-center items-center'>
+            <h3 className='text-white'>Google Maps API it costs 200 bucks :(</h3>
+            <span className='w-52 h-52 flex border-2'></span>
+          </div>
         </div>
         <div className='flex justify-center text-white text-xl gap-3'>
-          <a href="#">
+          <a href="*">
             <AiOutlineInstagram />
           </a>
-          <a href="#">
+          <a href="*">
             <AiOutlineLinkedin />
           </a>
-          <a href="#">
+          <a href="*">
             <AiOutlineFacebook />
           </a>
           <a href="https://github.com/oAndin"><AiOutlineGithub /></a>

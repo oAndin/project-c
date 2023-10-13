@@ -6,8 +6,7 @@ import Header from './components/Header/Index';
 const App = () => {
   return (
     <>
-      <div
-        className='w-screen h-screen bg-pattern'>
+      <div>
         <Header/>
         <Outlet />
         <Footer/>
