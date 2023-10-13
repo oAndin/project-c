@@ -14,11 +14,11 @@ const Footer = () => {
           className='flex justify-around items-center'>
           <div className='w-[15%]'>
             <Logo />
-            <p className='text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, facere reprehenderit! Quas omnis, quaerat, dolores nisi autem nobis architecto ducimus impedit magni quo asperiores obcaecati culpa, amet cum sapiente perspiciatis.</p>
+            <p className='text-sm text-white opacity-50'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, facere reprehenderit! Quas omnis, quaerat, dolores nisi autem nobis architecto ducimus impedit magni quo asperiores obcaecati culpa, amet cum sapiente perspiciatis.</p>
           </div>
           <CollumNavbar />
           <div id='map' className='flex flex-col justify-center items-center'>
-            <h3 className='text-white'>Google Maps API it costs 200 bucks :(</h3>
+            <h3 className='text-white mb-2'>Google Maps API it costs 200 bucks :(</h3>
             <span className='w-52 h-52 flex border-2'></span>
           </div>
         </div>
