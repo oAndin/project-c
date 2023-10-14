@@ -6,9 +6,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'pattern': ' #efefef',
+        'pattern': ' #ececec',
         'hover-pattern': '#ffd700',
         'dark-gray': '#1F1F1F',
+        'lighter-gray' : '#7b7b7b',
       },
     },
     plugins: [],
