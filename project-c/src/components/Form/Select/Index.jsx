@@ -11,6 +11,8 @@ const Select = ({text, name, options, handleOnChange, value}) => {
         <select 
         name={name} 
         id={name}
+        onChange={handleOnChange}
+        value={value || ''}
         className='bg-white placeholder:text-lighter-gray p-1'>
             {options.map((option)=> (
               <option 

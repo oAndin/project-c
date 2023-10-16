@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
 
 const Input = ({ type, text, name, placeholder, handleOnChange, value }) => {
-  // const [] = useState();
+
   return (
     <>
         <div
