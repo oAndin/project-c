@@ -2,6 +2,19 @@
   "projects": [
     {
       "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "name": "teste",
+      "budget": "2",
+      "cost": 0,
+      "services": [],
+      "id": 4
     }
   ],
   "categories": [
