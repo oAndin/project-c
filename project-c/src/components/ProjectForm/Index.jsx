@@ -23,11 +23,12 @@ const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
     }, [])
     const submit = (e) => {
         e.preventDefault();
-        handleSubmit(project)
+        handleSubmit(project);
+        console.log(project);
     };
 
     function handleChange(e) {
-        setProject({ ...project, [e.target.name]: e.target.value })
+        setProject({ ...project, [e.target.name] : e.target.value })
     }
     function handleCategory(e) {
         setProject({
