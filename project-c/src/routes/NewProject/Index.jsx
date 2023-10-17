@@ -13,18 +13,18 @@ const NewProject = () => {
     fetch("http://localhost:5000/projects", {
       method: 'POST',
       headers: {
-        'Cotent-type': 'application/json',
+        'Content-type': 'application/json',
       },
-      body: JSON.stringify(project),
+      body: JSON.stringify(project)
     })
       .then((resp) => resp.json())
       .then((data) => {
         console.log(data);
         // redirect
-        navigate('/projects', { message: 'Project created successfully!' })
+        navigate('/projects', alert('Project created!'))
       })
-      .catch((err) => console.log(err))
-  }
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
