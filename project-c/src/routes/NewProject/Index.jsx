@@ -21,7 +21,7 @@ const NewProject = () => {
       .then((data) => {
         console.log(data);
         // redirect
-        navigate('/projects', alert('Project created!'))
+        navigate('/projects',{state : {message:'Projected created successfully'}})
       })
       .catch((err) => console.log(err));
   };
