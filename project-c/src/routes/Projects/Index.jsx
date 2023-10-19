@@ -39,21 +39,23 @@ const Projects = () => {
         {message && (
           <Message msg={message} type="sucess" />
         )}
-        <div>
+        <div className='flex flex-col'>
           <span
-            className='w-full flex p-8 '>
+            className='p-8'>
             <h1 className='text-xl'>Your projects...</h1>
           </span>
-          {projects.length > 0 &&
-            projects.map((project) =>
-              <ProjectCard
-                id={project.id}
-                key={project.id}
-                name={project.name}
-                category={project.category.name}
-                budget={project.budget} />
-            )
-          }
+          <div id='container' className='w-1/6 flex gap-3 p-8'>
+            {projects.length > 0 &&
+              projects.map((project) =>
+                <ProjectCard
+                  id={project.id}
+                  key={project.id}
+                  name={project.name}
+                  category={project.category.name}
+                  budget={project.budget}/>
+              )
+            }
+          </div>
         </div>
       </div>
     </>
