@@ -1,10 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation } from "react-router";
 import Message from "../../components/Message/Index";
-import { Link } from 'react-router-dom';
+import ProjectCard from '../../components/ProjectCard/Index';
+
 
 
 const Projects = () => {
+
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/projects', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(projects);
+        setProjects(data)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }, []);
+
 
   const location = useLocation();
   let message = '';
@@ -19,11 +40,20 @@ const Projects = () => {
           <Message msg={message} type="sucess" />
         )}
         <div>
-          <h1>Projects</h1>
-          <button className='border-2 text-black border-black p-2 bg-white rounded-lg hover:bg-black hover:ease-in-out hover:duration-500 hover:text-hover-pattern'>
-            <Link to='/new_project'>New Project</Link>
-          </button>
-
+          <span
+            className='w-full flex p-8 '>
+            <h1 className='text-xl'>Your projects...</h1>
+          </span>
+          {projects.length > 0 &&
+            projects.map((project) =>
+              <ProjectCard
+                id={project.id}
+                key={project.id}
+                name={project.name}
+                category={project.category.name}
+                budget={project.budget} />
+            )
+          }
         </div>
       </div>
     </>
