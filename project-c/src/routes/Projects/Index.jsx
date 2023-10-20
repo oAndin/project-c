@@ -2,28 +2,31 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from "react-router";
 import Message from "../../components/Message/Index";
 import ProjectCard from '../../components/ProjectCard/Index';
-
+import Loader from '../../components/Loader/Index'
 
 
 const Projects = () => {
 
   const [projects, setProjects] = useState([]);
+  const [removeLoading, setRemoveLoading] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:5000/projects', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        console.log(projects);
-        setProjects(data)
+    setTimeout(() => {
+      fetch('http://localhost:5000/projects', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
       })
-      .catch((err) => {
-        console.log(err);
-      })
+        .then((resp) => resp.json())
+        .then((data) => {
+          setProjects(data)
+          setRemoveLoading(true)
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }, 400)
   }, []);
 
 
@@ -44,7 +47,7 @@ const Projects = () => {
             className='p-8'>
             <h1 className='text-xl'>Your projects...</h1>
           </span>
-          <div id='container' className='w-1/6 flex gap-3 p-8'>
+          <div id='container' className='flex justify-center gap-3 p-8'>
             {projects.length > 0 &&
               projects.map((project) =>
                 <ProjectCard
@@ -52,12 +55,16 @@ const Projects = () => {
                   key={project.id}
                   name={project.name}
                   category={project.category.name}
-                  budget={project.budget}/>
+                  budget={project.budget} />
               )
             }
-          </div>
+            {!removeLoading && <Loader />}
+            {!removeLoading && projects.length === 0
+               (<p> You dont have any projects yet!</p>) 
+            }
         </div>
       </div>
+    </div >
     </>
   )
 }
