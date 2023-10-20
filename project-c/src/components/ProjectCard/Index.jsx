@@ -1,23 +1,35 @@
-import React, { useEffect, useRef } from 'react'
-import { BsPencil, BsFillTrashFilll, BsFillTrashFill } from 'react-icons/bs';
+import React, { useEffect, useRef } from 'react';
+import { BsPencil, BsFillTrashFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
 const ProjectCard = ({ id, name, budget, category, handleRemove }) => {
 
-    let colorCategory = useRef('');
-
-    switch (colorCategory) {
-        case colorCategory.current === 'infrastructure':
+    let colorCategory = useRef(category);
+    switch (colorCategory.current) {
+        case 'Infrastructure':
             colorCategory = 'bg-infrastructure'
             break;
-        case colorCategory.current === 'development':
+        case 'Development':
             colorCategory = 'bg-development'
             break;
-        case colorCategory.current === 'design':
+        case 'Design':
             colorCategory = 'bg-design'
             break;
         default: colorCategory = 'bg-planning';
     }
+    // let colorCategory = useRef(category);
+    // switch (colorCategory.current) {
+    //     case (colorCategory.current) === 'Infrastructure':
+    //         colorCategory = 'bg-infrastructure'
+    //         break;
+    //     case (colorCategory.current) === 'Development':
+    //         colorCategory = 'bg-development'
+    //         break;
+    //     case (colorCategory.current) === 'Design':
+    //         colorCategory = 'bg-design'
+    //         break;
+    //     default: colorCategory = 'bg-planning';
+    // }
 
     // if(colorCategory === 'Infrastructure') {
     //     colorCategory = 'bg-infrastructure'
@@ -32,21 +44,27 @@ const ProjectCard = ({ id, name, budget, category, handleRemove }) => {
     //     colorCategory = 'bg-planning'
     // }
 
-    useEffect(()=> {
-        console.log((category))
-    },[])
+    //     console.log((category))
     return (
         <>
-            <div className='border-2 flex flex-col p-8'>
-                <p>{id}</p>
-                <p>{name}</p>
-                <p>{budget}</p>
+            <div className='border-2 border-black flex flex-col p-8 gap-3'>
+                <div id='top' className='bg-black flex justify-between p-2 rounded'>
+                    <p className='text-white'>{name}</p>
+                    <p className='text-white'>id: {id}</p>
+                </div>
+                <p>$ {budget}</p>
                 <div className='flex justify-center items-center gap-3'>
                     <span className={`w-2 h-2 bg-black rounded-full ${colorCategory}`}></span><p>{category}</p>
                 </div>
-                <div id="cardActions">
-                    <Link to='/'><BsPencil/>Editar</Link>
-                    <Link to='/'><BsFillTrashFill/>Remover</Link>
+                <div id="cardActions" className=' flex gap-3 w-full '>
+                    <div id='edit' className='flex w-24 gap-2 bg-white items-center border-2 border-black p-1 hover:bg-black hover:text-white ease-out duration-500'>
+                        <Link to='/'><BsPencil /></Link>
+                        <p>Edit</p>
+                    </div>
+                    <div id='remove' className='flex w-24 gap-2 bg-white items-center border-2 border-black p-1 hover:bg-black hover:text-white ease-out duration-500'>
+                        <Link to='/'><BsFillTrashFill /></Link>
+                        <p>Remove</p>
+                    </div>
                 </div>
             </div>
         </>
