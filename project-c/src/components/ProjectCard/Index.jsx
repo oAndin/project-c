@@ -16,4 +16,4 @@ const ProjectCard = ({ id, name, budget, category, handleRemove }) => {
     );
 };
 
-export default ProjectCard
+export default ProjectCard;
