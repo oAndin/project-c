@@ -59,7 +59,7 @@ const Projects = () => {
               )
             }
             {!removeLoading && <Loader />}
-            {!removeLoading && projects.length === 0
+            {!removeLoading && projects.length === 0 &&
                (<p> You dont have any projects yet!</p>) 
             }
         </div>
