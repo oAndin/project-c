@@ -1,24 +1,5 @@
 {
-  "projects": [
-    {
-      "name": "Teste do remover confirmação",
-      "budget": "100000000",
-      "cost": 0,
-      "services": [],
-      "id": 1
-    },
-    {
-      "name": "Teste de name error",
-      "budget": "200000",
-      "category": {
-        "id": "2",
-        "name": "Development"
-      },
-      "cost": 0,
-      "services": [],
-      "id": 2
-    }
-  ],
+  "projects": [],
   "categories": [
     {
       "id": 1,

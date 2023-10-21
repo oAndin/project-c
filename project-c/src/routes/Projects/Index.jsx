@@ -63,8 +63,8 @@ const Projects = () => {
           </span>
           <div id='container' className='flex justify-center gap-3 p-8'>
             {projects.length > 0 &&
-              projects.map((project) =>
-                <ProjectCard
+              projects.map((project) => <ProjectCard
+
                   id={project.id}
                   key={project.id}
                   name={project.name}
@@ -77,9 +77,7 @@ const Projects = () => {
             {!removeLoading && <Loader />}
             {
             removeLoading && 
-            projects.length === 0 && (
-              <p> You dont have any projects yet!</p>
-            )}
+            projects.length === 0 && (<p> You dont have any projects yet!</p>)}
           </div>
         </div>
       </div >
