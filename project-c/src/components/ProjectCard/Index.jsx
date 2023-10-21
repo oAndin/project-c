@@ -1,11 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { BsPencil, BsFillTrashFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
-const ProjectCard = ({ id, name, budget, category, handleRemove }) => {
+const ProjectCard = ({ id, name, budget, category, handleRemove, setIsOpen }) => {
 
     const remove = (e) => {
         e.preventDefault();
+        setIsOpen(true)
         handleRemove(id);
     }
 

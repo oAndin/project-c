@@ -26,7 +26,7 @@ const Projects = () => {
         .catch((err) => {
           console.log(err);
         })
-    }, 400)
+    }, 1000)
   }, []);
 
   function removeProject (id) {
@@ -74,7 +74,9 @@ const Projects = () => {
               )
             }
             {!removeLoading && <Loader />}
-            {!removeLoading && projects.length === 0 && (
+            {
+            !removeLoading && 
+            projects.length === 0 && (
               <p> You dont have any projects yet!</p>
             )}
           </div>
