@@ -75,7 +75,7 @@ const Projects = () => {
             }
             {!removeLoading && <Loader />}
             {
-            !removeLoading && 
+            removeLoading && 
             projects.length === 0 && (
               <p> You dont have any projects yet!</p>
             )}
