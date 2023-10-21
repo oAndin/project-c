@@ -11,6 +11,7 @@ const Projects = () => {
   const [removeLoading, setRemoveLoading] = useState(false);
 
   useEffect(() => {
+    setTimeout(() => {
       fetch('http://localhost:5000/projects', {
         method: 'GET',
         headers: {
@@ -20,12 +21,12 @@ const Projects = () => {
         .then((resp) => resp.json())
         .then((data) => {
           setProjects(data)
-          console.log(data);
           setRemoveLoading(true)
         })
         .catch((err) => {
           console.log(err);
         })
+    }, 400)
   }, []);
 
   function removeProject (id) {
