@@ -75,16 +75,10 @@ const Projects = () => {
               )
             }
             {!removeLoading && <Loader />}
-<<<<<<< HEAD
-            {projects.length === 0 && removeLoading && 
-               (<p> You dont have any projects yet!</p>) 
-            }
-=======
             {
             removeLoading && 
             projects.length === 0 && (<p> You dont have any projects yet!</p>)}
           </div>
->>>>>>> remove-feature
         </div>
       </div >
     </>
