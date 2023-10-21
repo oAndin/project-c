@@ -29,6 +29,20 @@ const Projects = () => {
     }, 400)
   }, []);
 
+  function removeProject (id) {
+    fetch(`http://localhost:5000/projects/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        setProjects(projects.filter((project) => project.id !== id))
+      })
+        //message confirming delete
+  .catch(err => console.log(err))
+  }
 
   const location = useLocation();
   let message = '';
@@ -55,16 +69,17 @@ const Projects = () => {
                   key={project.id}
                   name={project.name}
                   category={project.category.name}
-                  budget={project.budget} />
+                  budget={project.budget} 
+                  handleRemove={removeProject}/>
               )
             }
             {!removeLoading && <Loader />}
-            {!removeLoading && projects.length === 0
-               (<p> You dont have any projects yet!</p>) 
-            }
+            {!removeLoading && projects.length === 0 && (
+              <p> You dont have any projects yet!</p>
+            )}
+          </div>
         </div>
-      </div>
-    </div >
+      </div >
     </>
   )
 }
