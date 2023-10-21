@@ -23,8 +23,10 @@ const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
     }, [])
     const submit = (e) => {
         e.preventDefault();
-        handleSubmit(project);
-        console.log(project);
+        setTimeout(()=> {
+            handleSubmit(project);
+            console.log(project);
+        }, 500);
     };
 
     function handleChange(e) {

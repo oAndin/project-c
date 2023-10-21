@@ -1,8 +1,13 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { BsPencil, BsFillTrashFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
-const ProjectCard = ({ id, name, budget, category, handleRemove }) => {
+const ProjectCard = ({ id, name, budget, category, handleRemove}) => {
+
+    const remove = (e) => {
+        e.preventDefault();
+        handleRemove(id);
+    }
 
     let colorCategory = useRef(category);
     switch (colorCategory.current) {
@@ -57,14 +62,17 @@ const ProjectCard = ({ id, name, budget, category, handleRemove }) => {
                     <span className={`w-2 h-2 bg-black rounded-full ${colorCategory}`}></span><p>{category}</p>
                 </div>
                 <div id="cardActions" className=' flex gap-3 w-full '>
-                    <div id='edit' className='flex w-24 gap-2 bg-white items-center border-2 border-black p-1 hover:bg-black hover:text-white ease-out duration-500'>
+                    <button id='edit' className='flex w-24 gap-2 bg-white items-center border-2 border-black p-1 hover:bg-black hover:text-white ease-out duration-500'>
                         <Link to='/'><BsPencil /></Link>
                         <p>Edit</p>
-                    </div>
-                    <div id='remove' className='flex w-24 gap-2 bg-white items-center border-2 border-black p-1 hover:bg-black hover:text-white ease-out duration-500'>
+                    </button>
+                    <button
+                        id='remove'
+                        onClick={remove}
+                        className='flex w-24 gap-2 bg-white items-center border-2 border-black p-1 hover:bg-black hover:text-white ease-out duration-500'>
                         <Link to='/'><BsFillTrashFill /></Link>
                         <p>Remove</p>
-                    </div>
+                    </button>
                 </div>
             </div>
         </>

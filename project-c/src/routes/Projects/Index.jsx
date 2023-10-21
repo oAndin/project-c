@@ -29,14 +29,28 @@ const Projects = () => {
     }, 400)
   }, []);
 
+  function removeProject (id) {
+    fetch(`http://localhost:5000/projects/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        setProjects(projects.filter((project) => project.id !== id))
+      })
+        //message confirming delete
+  .catch(err => console.log(err))
+  }
 
   const location = useLocation();
   let message = '';
   if (location.state) {
     message = location.state.message
   }
-  return (
 
+  return (
     <>
       <div className='h-screen'>
         {message && (
@@ -49,22 +63,30 @@ const Projects = () => {
           </span>
           <div id='container' className='flex justify-center gap-3 p-8'>
             {projects.length > 0 &&
-              projects.map((project) =>
-                <ProjectCard
+              projects.map((project) => <ProjectCard
+
                   id={project.id}
                   key={project.id}
                   name={project.name}
                   category={project.category.name}
-                  budget={project.budget} />
+                  budget={project.budget} 
+                  handleRemove={removeProject}
+                  />
               )
             }
             {!removeLoading && <Loader />}
+<<<<<<< HEAD
             {projects.length === 0 && removeLoading && 
                (<p> You dont have any projects yet!</p>) 
             }
+=======
+            {
+            removeLoading && 
+            projects.length === 0 && (<p> You dont have any projects yet!</p>)}
+          </div>
+>>>>>>> remove-feature
         </div>
-      </div>
-    </div >
+      </div >
     </>
   )
 }
