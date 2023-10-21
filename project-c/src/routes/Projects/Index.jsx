@@ -20,30 +20,13 @@ const Projects = () => {
         .then((resp) => resp.json())
         .then((data) => {
           setProjects(data)
+          console.log(data);
           setRemoveLoading(true)
         })
         .catch((err) => {
           console.log(err);
         })
   }, []);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     fetch('http://localhost:5000/projects', {
-  //       method: 'GET',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //     })
-  //       .then((resp) => resp.json())
-  //       .then((data) => {
-  //         setProjects(data)
-  //         setRemoveLoading(true)
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       })
-  //   }, 1000)
-  // }, []);
 
   function removeProject (id) {
     fetch(`http://localhost:5000/projects/${id}`, {
@@ -65,8 +48,8 @@ const Projects = () => {
   if (location.state) {
     message = location.state.message
   }
-  return (
 
+  return (
     <>
       <div className='h-screen'>
         {message && (
@@ -86,7 +69,8 @@ const Projects = () => {
                   name={project.name}
                   category={project.category.name}
                   budget={project.budget} 
-                  handleRemove={removeProject}/>
+                  handleRemove={removeProject}
+                  />
               )
             }
             {!removeLoading && <Loader />}

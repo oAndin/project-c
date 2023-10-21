@@ -1,5 +1,4 @@
 import React from 'react';
-import ConfirmButton from '../../components/ConfirmButton/Index';
 
 const Test = () => {
   return (
@@ -9,7 +8,6 @@ const Test = () => {
         <h3>Nothing to see here</h3>
         <h6>Move along!</h6>
         <p>Thank you! :)</p>
-        <ConfirmButton/>
       </div>
     </>
   );
