@@ -11,7 +11,6 @@ const Projects = () => {
   const [removeLoading, setRemoveLoading] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
       fetch('http://localhost:5000/projects', {
         method: 'GET',
         headers: {
@@ -26,8 +25,25 @@ const Projects = () => {
         .catch((err) => {
           console.log(err);
         })
-    }, 1000)
   }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     fetch('http://localhost:5000/projects', {
+  //       method: 'GET',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     })
+  //       .then((resp) => resp.json())
+  //       .then((data) => {
+  //         setProjects(data)
+  //         setRemoveLoading(true)
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       })
+  //   }, 1000)
+  // }, []);
 
   function removeProject (id) {
     fetch(`http://localhost:5000/projects/${id}`, {
