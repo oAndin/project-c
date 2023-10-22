@@ -14,6 +14,7 @@ const Input = ({ type, text, name, placeholder, handleOnChange, value }) => {
             id={name}
             onChange={handleOnChange}
             value={value}
+            required
             className='bg-white w-full p-1' />
         </div>
     </>

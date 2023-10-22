@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { BsPencil, BsFillTrashFill } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
 
 const ProjectCard = ({ id, name, budget, category, handleRemove}) => {
 
@@ -63,14 +62,14 @@ const ProjectCard = ({ id, name, budget, category, handleRemove}) => {
                 </div>
                 <div id="cardActions" className=' flex gap-3 w-full '>
                     <button id='edit' className='flex w-24 gap-2 bg-white items-center border-2 border-black p-1 hover:bg-black hover:text-white ease-out duration-500'>
-                        <Link to='/'><BsPencil /></Link>
+                        <BsPencil />
                         <p>Edit</p>
                     </button>
                     <button
                         id='remove'
                         onClick={remove}
                         className='flex w-24 gap-2 bg-white items-center border-2 border-black p-1 hover:bg-black hover:text-white ease-out duration-500'>
-                        <Link to='/'><BsFillTrashFill /></Link>
+                        <BsFillTrashFill />
                         <p>Remove</p>
                     </button>
                 </div>
