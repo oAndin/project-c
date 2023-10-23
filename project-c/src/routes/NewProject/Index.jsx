@@ -1,29 +1,37 @@
 import { useNavigate } from 'react-router-dom';
-import React from 'react'
+import React, { useState } from 'react'
 import ProjectForm from '../../components/ProjectForm/Index';
+import Loader from '../../components/Loader/Index';
 
 const NewProject = () => {
+  const [removeLoading, setRemoveLoading] = useState(false);
+
   const navigate = useNavigate()
 
   function createPost(project) {
     // initialize cost and services
-    project.cost = 0
-    project.services = []
-    
-    fetch("http://localhost:5000/projects", {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(project)
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        console.log(data);
-        // redirect
-        navigate('/projects',{state : {message:'Projected created successfully'}})
+    setTimeout(() => {
+      setRemoveLoading(true)
+      project.cost = 0
+      project.services = []
+      fetch("http://localhost:5000/projects", {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(project)
       })
-      .catch((err) => console.log(err));
+        .then((resp) => resp.json())
+        .then((data) => {
+          console.log(data);
+          // redirect
+
+          navigate('/projects', { state: { message: 'Projected created successfully' } })
+        })
+        .catch((err) => console.log(err));
+    },  1000)
+
+
   };
 
   return (
@@ -36,6 +44,9 @@ const NewProject = () => {
           handleSubmit={createPost}
           btnText="Create new project" />
       </div>
+      {removeLoading && (
+        <Loader />
+      )}
     </>
   );
 };
