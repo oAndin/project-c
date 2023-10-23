@@ -1,13 +1,14 @@
 import React, { useRef } from 'react';
 import { BsPencil, BsFillTrashFill } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
-const ProjectCard = ({ id, name, budget, category, handleRemove}) => {
+const ProjectCard = ({ id, name, budget, category, handleRemove }) => {
 
     const remove = (e) => {
         e.preventDefault();
         // eslint-disable-next-line no-restricted-globals
         let answer = confirm('Are you sure?');
-        answer ? handleRemove(id): alert('The project was not deleted')
+        answer ? handleRemove(id) : alert('The project was not deleted')
     }
 
     let colorCategory = useRef(category);
@@ -63,10 +64,12 @@ const ProjectCard = ({ id, name, budget, category, handleRemove}) => {
                     <span className={`w-2 h-2 bg-black rounded-full ${colorCategory}`}></span><p>{category}</p>
                 </div>
                 <div id="cardActions" className=' flex gap-3 w-full '>
-                    <button id='edit' className='flex w-24 gap-2 bg-white items-center border-2 border-black p-1 hover:bg-black hover:text-white ease-out duration-500'>
-                        <BsPencil />
-                        <p>Edit</p>
-                    </button>
+                    <Link to={`/projects/{id}`}>
+                        <button id='edit' className='flex w-28 gap-2 bg-white flex items-center border-2 border-black p-1 hover:bg-black hover:text-white ease-out duration-500'>
+                            <BsPencil />
+                            <p>Edit</p>
+                        </button>
+                    </Link>
                     <button
                         id='remove'
                         onClick={remove}
