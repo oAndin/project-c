@@ -64,12 +64,12 @@ const ProjectCard = ({ id, name, budget, category, handleRemove }) => {
                     <span className={`w-2 h-2 bg-black rounded-full ${colorCategory}`}></span><p>{category}</p>
                 </div>
                 <div id="cardActions" className=' flex gap-3 w-full '>
-                    <button id='edit' className='flex w-24 gap-2 bg-white items-center border-2 border-black p-1 hover:bg-black hover:text-white ease-out duration-500'>
-                        <Link to={`/projects/{id}`}>
+                    <Link to={`/projects/{id}`}>
+                        <button id='edit' className='flex w-28 gap-2 bg-white flex items-center border-2 border-black p-1 hover:bg-black hover:text-white ease-out duration-500'>
                             <BsPencil />
                             <p>Edit</p>
-                        </Link>
-                    </button>
+                        </button>
+                    </Link>
                     <button
                         id='remove'
                         onClick={remove}

@@ -24,10 +24,9 @@ const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
     }, [])
     const submit = (e) => {
         e.preventDefault();
-        setTimeout(()=> {
+        setTimeout(() => {
             handleSubmit(project);
             setRemoveLoading(false);
-            console.log(project);
         }, 500);
     };
 
@@ -75,7 +74,7 @@ const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
                         <SubmitButton btnText="Create new Project" />
                     </div>
                     {!removeLoading && (
-                        <Loader/> 
+                        <Loader />
                     )}
                 </form>
             </div>
