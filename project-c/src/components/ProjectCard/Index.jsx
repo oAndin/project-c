@@ -5,7 +5,9 @@ const ProjectCard = ({ id, name, budget, category, handleRemove}) => {
 
     const remove = (e) => {
         e.preventDefault();
-        handleRemove(id);
+        // eslint-disable-next-line no-restricted-globals
+        let answer = confirm('Are you sure?');
+        answer ? handleRemove(id): alert('The project was not deleted')
     }
 
     let colorCategory = useRef(category);

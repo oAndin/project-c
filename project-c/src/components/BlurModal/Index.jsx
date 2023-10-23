@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
+import ButtonOpenModal from '../ButtonOpenModal/Index';
 
 
 
 const BlurModal = () => {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(true); 
 
     function handleOpen() {
         setIsOpen(true)
-    };
+    }; 
     function handleClose() {
         setIsOpen(false)
     };
@@ -22,8 +23,9 @@ const BlurModal = () => {
                 </div>
             )
             }
+            <ButtonOpenModal text='Open Modal' handleOpenModal={handleOpen}/>
         </div>
     )
 }
 
-export default BlurModal
+export default BlurModal;

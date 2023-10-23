@@ -2,7 +2,10 @@ import React from 'react';
 import BlurModal from '../../components/BlurModal/Index';
 import ButtonOpenModal from '../../components/ButtonOpenModal/Index';
 
-const Test = ({handleOpenModel}) => {
+const Test = ({handleOpenModal, setIsOpen}) => {
+  function handleOpen() {
+    setIsOpen(true)
+}; 
   return (
     <>
       <div className='h-screen'>
@@ -10,8 +13,8 @@ const Test = ({handleOpenModel}) => {
         <h3>Nothing to see here</h3>
         <h6>Move along!</h6>
         <p>Thank you! :)</p>
-        <ButtonOpenModal textButton='Open Modal'/>
         <BlurModal/>
+        <ButtonOpenModal handleOpenModal={handleOpen}/>
       </div>
     </>
   );
