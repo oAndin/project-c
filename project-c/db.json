@@ -1,17 +1,5 @@
 {
-  "projects": [
-    {
-      "name": "Andherson Costa",
-      "budget": "1",
-      "category": {
-        "id": "4",
-        "name": "Planning"
-      },
-      "cost": 0,
-      "services": [],
-      "id": 1
-    }
-  ],
+  "projects": [],
   "categories": [
     {
       "id": 1,

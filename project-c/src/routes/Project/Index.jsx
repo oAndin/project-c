@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 const Project = () => {
-  const { id } = useParams();
+  const {id} = useParams()
+  console.log(id);
   const [project, setProject] = useState([]);
   useEffect(() => {
     fetch(`http://localhost:5000/projects/${id}`, {
@@ -12,7 +13,7 @@ const Project = () => {
         'Content-Type': 'application/json',
       },
     })
-      .then((resp) => resp.json())
+      .then(resp => resp.json())
       .then((data) => {
         setProject(data)
       })
@@ -23,9 +24,11 @@ const Project = () => {
       <div
         className='h-screen'>
         <h1>Welcome to the editing page</h1>
+        {project && (
         <span>
           <h3>{project.name}</h3>
         </span>
+        )}
 
 
       </div>
