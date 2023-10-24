@@ -1,6 +1,8 @@
 import React from 'react';
+import BlurModal from '../../components/BlurModal/Index';
 
-const Test = () => {
+const Test = ({handleOpenModal, setIsOpen}) => {
+
   return (
     <>
       <div className='h-screen'>
@@ -8,6 +10,7 @@ const Test = () => {
         <h3>Nothing to see here</h3>
         <h6>Move along!</h6>
         <p>Thank you! :)</p>
+        <BlurModal/>
       </div>
     </>
   );

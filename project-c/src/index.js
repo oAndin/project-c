@@ -11,6 +11,7 @@ import Contact from './routes/Contact/Index';
 import NewProject from './routes/NewProject/Index';
 import WhoWeAre from './routes/WhoWeAre/Index';
 import Projects from './routes/Projects/Index';
+import Project from './routes/Project/Index';
 
 const router = createBrowserRouter(
   [
@@ -32,15 +33,19 @@ const router = createBrowserRouter(
         },
         {
           path: '/contacts',
-          element: <Contact/>
+          element: <Contact />
         },
         {
           path: '/new_project',
-          element: <NewProject/>
+          element: <NewProject />
         },
         {
           path: '/projects',
-          element: <Projects/>
+          element: <Projects />
+        },
+        {
+          path: '/project/:id',
+          element: <Project/>
         },
       ],
       errorElement: <Error />

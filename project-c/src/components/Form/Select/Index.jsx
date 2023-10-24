@@ -13,6 +13,7 @@ const Select = ({text, name, options, handleOnChange, value}) => {
         id={name}
         onChange={handleOnChange}
         value={value || ''}
+        required
         className='bg-white placeholder:text-lighter-gray p-1'>
             {options.map((option)=> (
               <option 

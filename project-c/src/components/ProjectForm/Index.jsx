@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Input from '../Form/Input/Index';
 import Select from '../Form/Select/Index';
 import SubmitButton from '../Form/SubmitButton/Index';
+import Loader from '../Loader/Index';
 
 const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
-
+    const [removeLoading, setRemoveLoading] = useState(true);
     const [categories, setCategories] = useState([]);
     const [project, setProject] = useState(projectData || {});
 
@@ -23,8 +24,10 @@ const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
     }, [])
     const submit = (e) => {
         e.preventDefault();
-        handleSubmit(project);
-        console.log(project);
+        setTimeout(() => {
+            handleSubmit(project);
+            setRemoveLoading(false);
+        }, 500);
     };
 
     function handleChange(e) {
@@ -70,6 +73,9 @@ const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
                     <div className='flex justify-center mt-2.5'>
                         <SubmitButton btnText="Create new Project" />
                     </div>
+                    {!removeLoading && (
+                        <Loader />
+                    )}
                 </form>
             </div>
         </>

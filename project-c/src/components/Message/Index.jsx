@@ -30,7 +30,7 @@ const Message = ({ type, msg }) => {
     return (
         <>
             {visible && (
-                <div className={`p-4 border-2 w-1/6 border-black my-0 mx-auto text-center rounded mb-8 mt-1 ${type}`}>
+                <div className={`absolute  p-4 border-2 w-1/6 border-black my-0 mx-auto text-center rounded mb-8 mt-1 ${type} left-1/2 transform -translate-x-1/2 `}>
                     <h1>{msg}</h1>
                 </div>
             )}

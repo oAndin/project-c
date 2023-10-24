@@ -2,45 +2,63 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from "react-router";
 import Message from "../../components/Message/Index";
 import ProjectCard from '../../components/ProjectCard/Index';
-
+import Loader from '../../components/Loader/Index'
 
 
 const Projects = () => {
 
   const [projects, setProjects] = useState([]);
+  const [removeLoading, setRemoveLoading] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:5000/projects', {
-      method: 'GET',
+    setTimeout(() => {
+      fetch('http://localhost:5000/projects', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((resp) => resp.json())
+        .then((data) => {
+          setProjects(data)
+          setRemoveLoading(true)
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }, 400)
+  }, []);
+
+  function removeProject (id) {
+    fetch(`http://localhost:5000/projects/${id}`, {
+      method: 'DELETE',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
     })
-      .then((resp) => resp.json())
-      .then((data) => {
-        console.log(projects);
-        setProjects(data)
+      .then(resp => resp.json())
+      .then(data => {
+        setProjects(projects.filter((project) => project.id !== id))
       })
-      .catch((err) => {
-        console.log(err);
-      })
-  }, []);
+        //message confirming delete
+  .catch(err => console.log(err))
+  }
 
   const location = useLocation();
   let message = '';
   if (location.state) {
     message = location.state.message
   }
-  return (
 
+  return (
     <>
       <div className='h-screen'>
         {message && (
           <Message msg={message} type="sucess" />
         )}
-        <div>
+        <div className='flex flex-col'>
           <span
-            className='w-full flex p-8 flex-col '>
+            className='p-8'>
             <h1 className='text-xl'>Your projects...</h1>
             <div id="container"
             className='flex flex-wrap gap-3'>
@@ -57,8 +75,26 @@ const Projects = () => {
               }
             </div>
           </span>
+          <div id='container' className='flex justify-center gap-3 p-8'>
+            {projects.length > 0 &&
+              projects.map((project) => <ProjectCard
+
+                  id={project.id}
+                  key={project.id}
+                  name={project.name}
+                  category={project.category.name}
+                  budget={project.budget} 
+                  handleRemove={removeProject}
+                  />
+              )
+            }
+            {!removeLoading && <Loader />}
+            {
+            removeLoading && 
+            projects.length === 0 && (<p> You dont have any projects yet!</p>)}
+          </div>
         </div>
-      </div>
+      </div >
     </>
   )
 }
