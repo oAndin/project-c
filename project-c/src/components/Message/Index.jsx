@@ -4,14 +4,14 @@ const Message = ({ type, msg }) => {
 
     const [visible, setVisible] = useState(false);
 
-    useEffect(()=> {
-        if(!msg){
+    useEffect(() => {
+        if (!msg) {
             setVisible(false)
             return
         }
         setVisible(true)
 
-        const timer = setTimeout(()=> {
+        const timer = setTimeout(() => {
             setVisible(false)
         }, 3500)
 

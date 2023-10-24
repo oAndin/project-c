@@ -26,7 +26,6 @@ const Projects = () => {
       })
   }, []);
 
-
   const location = useLocation();
   let message = '';
   if (location.state) {
@@ -41,19 +40,23 @@ const Projects = () => {
         )}
         <div>
           <span
-            className='w-full flex p-8 '>
+            className='w-full flex p-8 flex-col '>
             <h1 className='text-xl'>Your projects...</h1>
+            <div id="container"
+            className='flex flex-wrap gap-3'>
+              {projects.length > 0 &&
+                projects.map((project) =>
+                  <ProjectCard
+                    id={project.id}
+                    key={project.id}
+                    name={project.name}
+                    category={project.category.name}
+                    budget={project.budget}
+                    className={''} />
+                )
+              }
+            </div>
           </span>
-          {projects.length > 0 &&
-            projects.map((project) =>
-              <ProjectCard
-                id={project.id}
-                key={project.id}
-                name={project.name}
-                category={project.category.name}
-                budget={project.budget} />
-            )
-          }
         </div>
       </div>
     </>
