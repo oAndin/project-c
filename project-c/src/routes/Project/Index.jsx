@@ -21,7 +21,7 @@ const Project = () => {
           setProject(data)
         })
         .catch((err) => console.log(err))
-    }, 5000)
+    }, 500)
   }, [id])
 
   return (
