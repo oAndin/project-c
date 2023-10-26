@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import ButtonOpenModal from '../ButtonOpenModal/Index';
+import { BlurContext } from '../../contexts/BlurContext/Index';
 
 
 
 const BlurModal = () => {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useContext(BlurContext);
 
     function handleOpen() {
         setIsOpen(true)
