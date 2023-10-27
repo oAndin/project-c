@@ -1,17 +1,13 @@
-import React, { useContext, useState } from 'react'
-import ButtonOpenModal from '../ButtonOpenModal/Index';
-import { BlurContext } from '../../contexts/BlurContext/Index';
+import React, { useState } from 'react'
 
 
 
 const BlurModal = () => {
-    const [isOpen, setIsOpen] = useContext(BlurContext);
-
-    function handleOpen() {
-        setIsOpen(true)
-    };
-    function handleClose() {
-        setIsOpen(false)
+    
+    const [isOpen, setIsOpen] = useState();
+    
+    function handleToggleModal() {
+        setIsOpen(!isOpen)
     };
 
     return (
@@ -20,11 +16,10 @@ const BlurModal = () => {
                 <div
                     id='blur'
                     className='absolute top-0 left-0 backdrop-blur-3xl opacity-80 w-full h-screen'
-                    onClick={handleClose}>
+                    onClick={handleToggleModal}>
                 </div>
             )
             }
-            <ButtonOpenModal text='Open Modal' handleOpenModal={handleOpen} />
         </div>
     )
 }

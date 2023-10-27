@@ -1,7 +1,8 @@
 import React from 'react';
 import BlurModal from '../../components/BlurModal/Index';
+import ButtonOpenModal from '../../components/ButtonOpenModal/Index';
 
-const Test = ({handleOpenModal, setIsOpen}) => {
+const Test = () => {
 
   return (
     <>
@@ -11,6 +12,8 @@ const Test = ({handleOpenModal, setIsOpen}) => {
         <h6>Move along!</h6>
         <p>Thank you! :)</p>
         <BlurModal/>
+        <ButtonOpenModal/>
+        
       </div>
     </>
   );

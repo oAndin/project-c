@@ -1,5 +1,4 @@
 import './input.css';
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -12,6 +11,7 @@ import NewProject from './routes/NewProject/Index';
 import WhoWeAre from './routes/WhoWeAre/Index';
 import Projects from './routes/Projects/Index';
 import Project from './routes/Project/Index';
+import React from 'react';
 
 const router = createBrowserRouter(
   [
