@@ -3,9 +3,9 @@ import React, { useState } from 'react'
 
 
 const BlurModal = () => {
-    
-    const [isOpen, setIsOpen] = useState();
-    
+
+    const [isOpen, setIsOpen] = useState(false);
+
     function handleToggleModal() {
         setIsOpen(!isOpen)
     };
