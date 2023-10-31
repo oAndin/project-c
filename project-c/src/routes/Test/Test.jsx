@@ -7,6 +7,8 @@ const Test = () => {
 
   const {isOpen} = useContext(BlurContext);
 
+  let status = isOpen ? 'Open' : 'Closed';
+
   return (
     <>
       <div className='h-screen'>
@@ -14,7 +16,8 @@ const Test = () => {
         <h3>Nothing to see here</h3>
         <h6>Move along!</h6>
         <p>Thank you! :)</p>
-        <BlurModal/>  
+        <h1>{status}</h1>
+        {isOpen && (<BlurModal/>)}  
         {!isOpen && (<ButtonOpenModal/>)}
       </div>
     </>
