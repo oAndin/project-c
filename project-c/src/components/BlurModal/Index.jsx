@@ -1,22 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext} from 'react'
+import { BlurContext } from '../../contexts/BlurContext/Index';
 
 
 
 const BlurModal = () => {
-    
-    const [isOpen, setIsOpen] = useState();
-    
-    function handleToggleModal() {
-        setIsOpen(!isOpen)
-    };
-
+    const {isOpen} = useContext(BlurContext);
+    const {toggleIsOpen} = useContext(BlurContext);
     return (
         <div>
             {isOpen && (
                 <div
+                    onClick={toggleIsOpen}
                     id='blur'
-                    className='absolute top-0 left-0 backdrop-blur-3xl opacity-80 w-full h-screen'
-                    onClick={handleToggleModal}>
+                    className='absolute top-0 left-0 backdrop-blur-3xl opacity-80 w-full h-screen'>
                 </div>
             )
             }

@@ -3,11 +3,16 @@ import { createContext, useState } from "react";
 export const BlurContext = createContext();
 
 export const BlurProvider = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-  return (
-    <BlurContext.Provider value={{ isOpen, setIsOpen }}>
-      {children}
-    </BlurContext.Provider>
-  )
+    function toggleIsOpen () {
+        setIsOpen(!isOpen)
+      }
+    
+
+    return (
+        <BlurContext.Provider value={{ isOpen, toggleIsOpen }}>
+            {children}
+        </BlurContext.Provider>
+    )
 }

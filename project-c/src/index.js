@@ -12,6 +12,7 @@ import WhoWeAre from './routes/WhoWeAre/Index';
 import Projects from './routes/Projects/Index';
 import Project from './routes/Project/Index';
 import React from 'react';
+import { BlurProvider } from './contexts/BlurContext/Index';
 
 const router = createBrowserRouter(
   [
@@ -45,7 +46,7 @@ const router = createBrowserRouter(
         },
         {
           path: '/project/:id',
-          element: <Project/>
+          element: <Project />
         },
       ],
       errorElement: <Error />
@@ -56,7 +57,9 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <BlurProvider  >
+      <RouterProvider router={router} />
+    </BlurProvider>
   </React.StrictMode>
 );
 
