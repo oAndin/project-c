@@ -1,11 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import BlurModal from '../../components/BlurModal/Index';
 import ButtonOpenModal from '../../components/ButtonOpenModal/Index';
-import { BlurContext } from '../../contexts/BlurContext/Index';
 
 const Test = () => {
-
-  const {isOpen} = useContext(BlurContext);
 
   return (
     <>
@@ -17,7 +14,6 @@ const Test = () => {
         <p>Thank you! :)</p>
         <BlurModal/>  
         <ButtonOpenModal/>
-        <p>{isOpen}</p>
       </div>
     </>
   );
