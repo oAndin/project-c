@@ -4,10 +4,15 @@ import { useParams } from 'react-router-dom'
 import Loader from '../../components/Loader/Index';
 
 const Project = () => {
+
+  function toggleProjectForm() {
+    setShowProjectForm(!showProjectForm)
+  }
+
   const { id } = useParams();
 
   const [project, setProject] = useState([]);
-
+  const [showProjectForm, setShowProjectForm] = useState();
   useEffect(() => {
     setTimeout(() => {
       fetch(`http://localhost:5000/projects/${id}`, {
@@ -30,7 +35,26 @@ const Project = () => {
         {project.name ?
           <div>
             <span>
-              {project.name}
+              <h1>Project: {project.name}</h1>
+              <button onClick={toggleProjectForm}
+                className='border-2 border-black p-1'>
+                {!showProjectForm ? 'Edit project' : 'Close'}
+              </button>
+              {!showProjectForm ? (
+                <div>
+                  <p>
+                    <span>Category:</span><p>{project.category.name}</p>
+                  </p>
+                  <p>
+                    <span>Total budget:</span><p>{project.budget}</p>
+                  </p>
+                  <p>
+                    <span>Project cost:</span><p>{project.cost}</p>
+                  </p>
+                </div>
+              ) : (
+                <p>Project details</p>
+              )}
             </span>
           </div> : (
             <Loader />

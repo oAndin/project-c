@@ -23,7 +23,7 @@ const NewProject = () => {
       .then((data) => {
       })
       .catch((err) => console.log(err))
-      // setRemoveLoading(true)
+      setRemoveLoading(true)
       .finally( () => {
       // redirect
       navigate('/projects', { state: { message: 'Projected created successfully'}})

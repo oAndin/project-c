@@ -4,12 +4,13 @@ import Footer from './components/Footer/Index';
 import Header from './components/Header/Index';
 
 const App = () => {
+
   return (
     <>
       <div>
-        <Header/>
-        <Outlet />
-        <Footer/>
+          <Header />
+          <Outlet />
+          <Footer />
       </div>
     </>
   )
