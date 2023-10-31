@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useLocation } from "react-router";
 import Message from "../../components/Message/Index";
 import ProjectCard from '../../components/ProjectCard/Index';
 import Loader from '../../components/Loader/Index'
+import BlurModal from '../../components/BlurModal/Index';
+import { BlurContext } from '../../contexts/BlurContext/Index';
+import ButtonOpenModal from '../../components/ButtonOpenModal/Index';
 
 
 const Projects = () => {
-
+  const {isOpen} = useContext(BlurContext);
+  const {toggleIsOpen} = useContext(BlurContext);
   const [projects, setProjects] = useState([]);
   const [removeLoading, setRemoveLoading] = useState(false);
 
@@ -79,6 +83,8 @@ const Projects = () => {
             removeLoading && 
             projects.length === 0 && (<p> You dont have any projects yet!</p>)}
           </div>
+          <ButtonOpenModal/>
+          {isOpen && (<BlurModal/>)}  
         </div>
       </div >
     </>
