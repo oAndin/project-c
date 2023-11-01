@@ -5,7 +5,7 @@ import { BlurContext } from '../../contexts/BlurContext/Index';
 
 const Test = () => {
 
-  const {isOpen} = useContext(BlurContext);
+  const { isOpen } = useContext(BlurContext);
 
   let status = isOpen ? 'Open' : 'Closed';
 
@@ -17,8 +17,8 @@ const Test = () => {
         <h6>Move along!</h6>
         <p>Thank you! :)</p>
         <h1>{status}</h1>
-        {isOpen && (<BlurModal/>)}  
-        {!isOpen && (<ButtonOpenModal/>)}
+        {isOpen && (<BlurModal />)}
+        {!isOpen && (<ButtonOpenModal />)}
       </div>
     </>
   );
