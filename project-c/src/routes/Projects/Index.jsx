@@ -9,8 +9,7 @@ import ButtonOpenModal from '../../components/ButtonOpenModal/Index';
 
 
 const Projects = () => {
-  const {isOpen} = useContext(BlurContext);
-  const {toggleIsOpen} = useContext(BlurContext);
+  const {isOpen, toggleIsOpen} = useContext(BlurContext);
   const [projects, setProjects] = useState([]);
   const [removeLoading, setRemoveLoading] = useState(false);
 

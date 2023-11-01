@@ -5,8 +5,7 @@ import ButtonOpenModal from '../ButtonOpenModal/Index';
 
 
 const BlurModal = () => {
-    const {isOpen} = useContext(BlurContext);
-    const {toggleIsOpen} = useContext(BlurContext);
+    const {isOpen, toggleIsOpen} = useContext(BlurContext);
     return (
         <div>
             {isOpen && (
