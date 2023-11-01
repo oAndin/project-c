@@ -9,7 +9,7 @@ import ButtonOpenModal from '../../components/ButtonOpenModal/Index';
 
 
 const Projects = () => {
-  const {isOpen, toggleIsOpen} = useContext(BlurContext);
+  const { isOpen, toggleIsOpen } = useContext(BlurContext);
   const [projects, setProjects] = useState([]);
   const [removeLoading, setRemoveLoading] = useState(false);
 
@@ -32,7 +32,7 @@ const Projects = () => {
     }, 400)
   }, []);
 
-  function removeProject (id) {
+  function removeProject(id) {
     fetch(`http://localhost:5000/projects/${id}`, {
       method: 'DELETE',
       headers: {
@@ -43,8 +43,8 @@ const Projects = () => {
       .then(data => {
         setProjects(projects.filter((project) => project.id !== id))
       })
-        //message confirming delete
-  .catch(err => console.log(err))
+      //message confirming delete
+      .catch(err => console.log(err))
   }
 
   const location = useLocation();
@@ -67,23 +67,24 @@ const Projects = () => {
           <div id='container' className='flex justify-center gap-3 p-8'>
             {projects.length > 0 &&
               projects.map((project) => <ProjectCard
-
-                  id={project.id}
-                  key={project.id}
-                  name={project.name}
-                  category={project.category.name}
-                  budget={project.budget} 
-                  handleRemove={removeProject}
-                  />
+                id={project.id}
+                key={project.id}
+                name={project.name}
+                category={project.category.name}
+                budget={project.budget}
+                handleRemove={removeProject}
+              />
               )
             }
             {!removeLoading && <Loader />}
             {
-            removeLoading && 
-            projects.length === 0 && (<p> You dont have any projects yet!</p>)}
+              removeLoading &&
+              projects.length === 0 && (<p> You dont have any projects yet!</p>)}
           </div>
-          <ButtonOpenModal/>
-          {isOpen && (<BlurModal/>)}  
+          <div className='w-20'>
+            <ButtonOpenModal />
+          </div>
+          {isOpen && (<BlurModal />)}
         </div>
       </div >
     </>
