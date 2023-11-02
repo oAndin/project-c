@@ -21,6 +21,7 @@ const BlurModal = () => {
             }
         </div>
     )
+    
 }
 
 export default BlurModal;
