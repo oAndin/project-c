@@ -21,7 +21,7 @@ const Projects = () => {
           'Content-Type': 'application/json',
         },
       })
-        .then((resp) => resp.json())
+           .then((resp) => resp.json())
         .then((data) => {
           setProjects(data)
           setRemoveLoading(true)

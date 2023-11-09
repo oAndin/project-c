@@ -32,33 +32,33 @@ const Project = () => {
   return (
     <>
       <div className='h-screen p-8'>
-        {project.name ?
-          <div>
-            <span>
-              <h1>Project: {project.name}</h1>
-              <button onClick={toggleProjectForm}
-                className='border-2 border-black p-1'>
-                {!showProjectForm ? 'Edit project' : 'Close'}
-              </button>
-              {!showProjectForm ? (
-                <div>
-                  <p>
-                    <span>Category:</span><p>{project.category.name}</p>
-                  </p>
-                  <p>
-                    <span>Total budget:</span><p>{project.budget}</p>
-                  </p>
-                  <p>
-                    <span>Project cost:</span><p>{project.cost}</p>
-                  </p>
-                </div>
-              ) : (
-                <p>Project details</p>
-              )}
-            </span>
+        { project.name ?
+          <div className='border-2 border-black p-4 bg-white text-black flex gap-2'>
+            <h1 className='bg-slate-400'>Project: {project.name}</h1>
+            {!showProjectForm ? (
+              <div className='border-2 border-black'>
+                <p className='flex gap-1'>
+                  <span className='bg-slate-400'>Category:</span><p>{project.category.name}</p>
+                </p>
+                <p className='flex gap-1'>
+                  <span className='bg-slate-400'>Total budget:</span><p>{project.budget}</p>
+                </p>
+                <p className='flex gap-1'>
+                  <span className='bg-slate-400'>Project cost:</span><p>{project.cost}</p>
+                </p>
+              </div>
+            ) : (
+              <p>Project details</p>
+            )}
           </div> : (
             <Loader />
           )}
+        <span>
+          <button onClick={toggleProjectForm}
+            className='border-2 border-black p-1'>
+            {!showProjectForm ? 'Edit project' : 'Close'}
+          </button>
+        </span>
       </div>
     </>
   )
