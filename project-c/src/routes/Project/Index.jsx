@@ -26,39 +26,40 @@ const Project = () => {
           setProject(data)
         })
         .catch((err) => console.log(err))
-    }, 5000)
+    }, 500)
   }, [id])
 
   return (
     <>
-      <div className='h-screen p-8'>
+      <div className='h-screen p-8 gap-2'>
+        <span>
+          <button onClick={toggleProjectForm}
+            className='border-2 border-black p-1'>
+            {!showProjectForm ? 'Edit project' : 'Close'}
+          </button>
+        </span>
         {project.name ?
-          <div>
-            <span>
-              <h1>Project: {project.name}</h1>
-              <button onClick={toggleProjectForm}
-                className='border-2 border-black p-1'>
-                {!showProjectForm ? 'Edit project' : 'Close'}
-              </button>
-              {!showProjectForm ? (
-                <div>
-                  <p>
-                    <span>Category:</span><p>{project.category.name}</p>
-                  </p>
-                  <p>
-                    <span>Total budget:</span><p>{project.budget}</p>
-                  </p>
-                  <p>
-                    <span>Project cost:</span><p>{project.cost}</p>
-                  </p>
-                </div>
-              ) : (
-                <p>Project details</p>
-              )}
-            </span>
+          <div className='border-2 border-black p-4 bg-white text-black flex flex-col gap-2 w-60'>
+            <h1 className='border-2 border-black'>Project: {project.name}</h1>
+            {!showProjectForm ? (
+              <div className='border-2 border-black flex flex-col gap-2 p-3'>
+                <p className='flex gap-1 flex-col'>
+                  <span className='bg-black text-hover-pattern'>Category:</span><p>{project.category.name}</p>
+                </p>
+                <p className='flex gap-1 flex-col'>
+                  <span className='bg-black text-hover-pattern'>Total budget:</span><p>{project.budget}</p>
+                </p>
+                <p className='flex gap-1 flex-col'>
+                  <span className='bg-black text-hover-pattern'>Project cost:</span><p>{project.cost}</p>
+                </p>
+              </div>
+            ) : (
+              <p>Project details</p>
+            )}
           </div> : (
             <Loader />
           )}
+
       </div>
     </>
   )

@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import BlurModal from '../../components/BlurModal/Index';
 import ButtonOpenModal from '../../components/ButtonOpenModal/Index';
+import { BlurContext } from '../../contexts/BlurContext/Index';
 
 const Test = () => {
+
+  const { isOpen } = useContext(BlurContext);
+
+  let status = isOpen ? 'Open' : 'Closed';
 
   return (
     <>
@@ -11,9 +16,9 @@ const Test = () => {
         <h3>Nothing to see here</h3>
         <h6>Move along!</h6>
         <p>Thank you! :)</p>
-        <BlurModal/>
-        <ButtonOpenModal/>
-        
+        <h1>{status}</h1>
+        {isOpen && (<BlurModal />)}
+        {!isOpen && (<ButtonOpenModal />)}
       </div>
     </>
   );
