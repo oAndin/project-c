@@ -1,11 +1,10 @@
-import React from 'react'
 
-const SubmitButton = ({btnText}) => {
+const SubmitButton = ({ btnText }) => {
     return (
         <>
             <div>
                 <button
-                    className='bg-black text-white p-3 transition-300 cursor-pointer hover:text-hover-pattern'>
+                    className='bg-black text-white p-3 w-full mb-1 border-white border-2 transition-300 cursor-pointer hover:text-hover-pattern'>
                     {btnText}
                 </button>
             </div>
@@ -13,4 +12,4 @@ const SubmitButton = ({btnText}) => {
     )
 }
 
-export default SubmitButton
+export default SubmitButton;

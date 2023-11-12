@@ -45,8 +45,10 @@ const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
 
     return (
         <>
-            <div className='w-80'>
-                <form onSubmit={submit}>
+            <div className='w-full'>
+                <form
+                    className='bg-black text-white placeholder:text-slate-500'
+                    onSubmit={submit}>
                     <Input
                         type='text'
                         text="Project's name"
@@ -71,7 +73,7 @@ const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
                         />
                     </div>
                     <div className='flex justify-center mt-2.5'>
-                        <SubmitButton btnText="Create new Project" />
+                        <SubmitButton btnText={btnText} />
                     </div>
                     {!removeLoading && (
                         <Loader />

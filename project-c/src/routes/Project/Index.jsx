@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { useParams } from 'react-router-dom'
 import Loader from '../../components/Loader/Index';
+import ProjectForm from '../../components/ProjectForm/Index';
 
 const Project = () => {
 
@@ -9,10 +10,33 @@ const Project = () => {
     setShowProjectForm(!showProjectForm)
   }
 
+  function editPost(project) {
+    // budget validation 
+    if (project.budget < project.cost) {
+      // message
+    }
+
+    fetch(`http://localhost:5000/projects/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(project),
+    })
+      .then(resp => resp.json())
+      .then((data) => {
+        setProject(data)
+        setShowProjectForm(false)
+        //message
+      })
+      .catch((err) => console.log((err)))
+  }
+
   const { id } = useParams();
 
   const [project, setProject] = useState([]);
   const [showProjectForm, setShowProjectForm] = useState();
+
   useEffect(() => {
     setTimeout(() => {
       fetch(`http://localhost:5000/projects/${id}`, {
@@ -39,7 +63,7 @@ const Project = () => {
           </button>
         </span>
         {project.name ?
-          <div className='border-2 border-black p-4 bg-white text-black flex flex-col gap-2 w-60'>
+          <div className='border-2 border-black p-4 bg-white text-black flex flex-col gap-2 w-1/2'>
             <h1 className='border-2 border-black'>Project: {project.name}</h1>
             {!showProjectForm ? (
               <div className='border-2 border-black flex flex-col gap-2 p-3'>
@@ -54,7 +78,9 @@ const Project = () => {
                 </p>
               </div>
             ) : (
-              <p>Project details</p>
+              <div id="form" className='w-full'>
+                <ProjectForm handleSubmit={editPost} btnText='Edit Project' projectData={project} />
+              </div>
             )}
           </div> : (
             <Loader />

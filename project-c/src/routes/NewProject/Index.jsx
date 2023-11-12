@@ -23,11 +23,11 @@ const NewProject = () => {
       .then((data) => {
       })
       .catch((err) => console.log(err))
-      setRemoveLoading(true)
-      .finally( () => {
-      // redirect
-      navigate('/projects', { state: { message: 'Projected created successfully'}})
-    })
+      .finally(() => {
+        // redirect
+        setRemoveLoading(true)
+        navigate('/projects', { state: { message: 'Projected created successfully' } })
+      })
   };
 
   return (
@@ -35,10 +35,11 @@ const NewProject = () => {
       <div className='h-screen flex flex-col justify-center items-center gap-5'>
         <h1>New project</h1>
         <p>Create and new project and start to add the services</p>
-        <p>form</p>
-        <ProjectForm
-          handleSubmit={createPost}
-          btnText="Create new project" />
+        <div className='w-1/2'>
+          <ProjectForm
+            handleSubmit={createPost}
+            btnText="Create new project" />
+        </div>
       </div>
       {removeLoading && (
         <Loader />
