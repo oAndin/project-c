@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import Loader from '../../components/Loader/Index';
 import ProjectForm from '../../components/ProjectForm/Index';
 import Message from '../../components/Message/Index';
+import ServiceForm from '../../components/Services/ServiceForm/Index';
 
 const Project = () => {
 
@@ -69,7 +70,7 @@ const Project = () => {
 
   return (
     <>
-      <div className='h-screen p-8 gap-2'>
+      <div className='h-screen p-12 gap-2'>
         {message && <Message type={type} />}
 
         {project.name ?
@@ -109,7 +110,11 @@ const Project = () => {
                 {!showServiceForm ? 'Add service' : 'Close'}
               </button>
               <div className='p-2'></div>
-              {showServiceForm && <div>Formulario de serviço</div>}
+              {showServiceForm && (
+                <ServiceForm
+
+                />
+              )}
               <div
                 id='Container'
                 className='border-2 border-black'>
