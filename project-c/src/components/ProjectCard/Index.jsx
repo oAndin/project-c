@@ -57,7 +57,6 @@ const ProjectCard = ({ id, name, budget, category, handleRemove }) => {
             <div className='border-2 border-black flex flex-col p-8 gap-3'>
                 <div id='top' className='bg-black flex justify-between p-2 rounded'>
                     <p className='text-white'>{name}</p>
-                    <p className='text-white'>id: {id}</p>
                 </div>
                 <p>$ {budget}</p>
                 <div className='flex justify-center items-center gap-3'>

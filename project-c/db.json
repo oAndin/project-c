@@ -1,15 +1,26 @@
 {
   "projects": [
     {
-      "name": "Teste de confiança atualizado",
+      "name": "Teste de confiança atualizado 6",
       "budget": "20",
       "category": {
-        "id": "3",
-        "name": "Design"
+        "id": "1",
+        "name": "Infrastructure"
       },
       "cost": 0,
       "services": [],
       "id": 1
+    },
+    {
+      "name": "Teste 123",
+      "budget": "123",
+      "category": {
+        "id": "4",
+        "name": "Planning"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 2
     }
   ],
   "categories": [

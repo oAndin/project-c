@@ -21,7 +21,7 @@ const Projects = () => {
           'Content-Type': 'application/json',
         },
       })
-           .then((resp) => resp.json())
+        .then((resp) => resp.json())
         .then((data) => {
           setProjects(data)
           setRemoveLoading(true)
@@ -66,14 +66,15 @@ const Projects = () => {
           </span>
           <div id='container' className='flex justify-center gap-3 p-8'>
             {projects.length > 0 &&
-              projects.map((project) => <ProjectCard
-                id={project.id}
-                key={project.id}
-                name={project.name}
-                category={project.category.name}
-                budget={project.budget}
-                handleRemove={removeProject}
-              />
+              projects.map((project) =>
+                <ProjectCard
+                  id={project.id}
+                  key={project.id}
+                  name={project.name}
+                  category={project.category.name}
+                  budget={project.budget}
+                  handleRemove={removeProject}
+                />
               )
             }
             {!removeLoading && <Loader />}

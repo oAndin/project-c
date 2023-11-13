@@ -7,18 +7,30 @@ import Message from '../../components/Message/Index';
 
 const Project = () => {
 
+  const { id } = useParams();
+
+  const [project, setProject] = useState([]);
+  const [showProjectForm, setShowProjectForm] = useState();
+  const [showServiceForm, setServiceForm] = useState();
+  const [message, setMessage] = useState();
+  const [type, setType] = useState();
+
+
   function toggleProjectForm() {
     setShowProjectForm(!showProjectForm)
   }
+  function toggleServiceForm() {
+    setServiceForm(!showServiceForm)
+  }
 
   function editPost(project) {
+    setMessage('');
     // budget validation 
     if (project.budget < project.cost) {
       setMessage('The project cost setted must fit the project budget!')
       setType('error')
       return false;
     }
-
     fetch(`http://localhost:5000/projects/${id}`, {
       method: 'PATCH',
       headers: {
@@ -30,19 +42,14 @@ const Project = () => {
       .then((data) => {
         setProject(data)
         setShowProjectForm(false)
-        // message
-        setMessage('Project updated sucefully')
+        setMessage('Project updated sucefully!')
         setType('sucess')
+        alert('project updated sucefully!')
+        console.log(message);
       })
       .catch((err) => console.log((err)))
   }
 
-  const { id } = useParams();
-
-  const [project, setProject] = useState([]);
-  const [showProjectForm, setShowProjectForm] = useState();
-  const [message, setMessage] = useState();
-  const [type, setType] = useState();
 
   useEffect(() => {
     setTimeout(() => {
@@ -63,37 +70,55 @@ const Project = () => {
   return (
     <>
       <div className='h-screen p-8 gap-2'>
-        <span>
-          <button onClick={toggleProjectForm}
-            className='border-2 border-black p-1'>
-            {!showProjectForm ? 'Edit project' : 'Close'}
-          </button>
-          {message && <Message type={type} />}
-        </span>
+        {message && <Message type={type} />}
+
         {project.name ?
+
           <div className='border-2 border-black p-4 bg-white text-black flex flex-col gap-2 w-1/2'>
+            <span>
+              <button onClick={toggleProjectForm}
+                className='border-2 border-black p-1'>
+                {!showProjectForm ? 'Edit project' : 'Close'}
+              </button>
+            </span>
             <h1 className='border-2 border-black'>Project: {project.name}</h1>
             {!showProjectForm ? (
               <div className='border-2 border-black flex flex-col gap-2 p-3'>
-                <p className='flex gap-1 flex-col'>
+                <div className='flex gap-1 flex-col'>
                   <span className='bg-black text-hover-pattern'>Category:</span><p>{project.category.name}</p>
-                </p>
-                <p className='flex gap-1 flex-col'>
+                </div>
+                <div className='flex gap-1 flex-col'>
                   <span className='bg-black text-hover-pattern'>Total budget:</span><p>{project.budget}</p>
-                </p>
-                <p className='flex gap-1 flex-col'>
+                </div >
+                <div className='flex gap-1 flex-col'>
                   <span className='bg-black text-hover-pattern'>Project cost:</span><p>{project.cost}</p>
-                </p>
+                </div>
               </div>
             ) : (
               <div id="form" className='w-full'>
-                <ProjectForm handleSubmit={editPost} btnText='Edit Project' projectData={project} />
+                <ProjectForm
+                  handleSubmit={editPost}
+                  btnText='Edit Project'
+                  projectData={project} />
               </div>
             )}
+            <div className='border-2 border-black p-2'>
+              <button
+                className='p-2 border-2 border-black'
+                onClick={toggleServiceForm}>
+                {!showServiceForm ? 'Add service' : 'Close'}
+              </button>
+              <div className='p-2'></div>
+              {showServiceForm && <div>Formulario de serviço</div>}
+              <div
+                id='Container'
+                className='border-2 border-black'>
+                <p>Itens de serviço</p>
+              </div>
+            </div>
           </div> : (
             <Loader />
           )}
-
       </div>
     </>
   )
