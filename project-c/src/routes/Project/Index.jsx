@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Loader from '../../components/Loader/Index';
 import ProjectForm from '../../components/ProjectForm/Index';
+import Message from '../../components/Message/Index';
 
 const Project = () => {
 
@@ -13,7 +14,9 @@ const Project = () => {
   function editPost(project) {
     // budget validation 
     if (project.budget < project.cost) {
-      // message
+      setMessage('The project cost setted must fit the project budget!')
+      setType('error')
+      return false;
     }
 
     fetch(`http://localhost:5000/projects/${id}`, {
@@ -27,7 +30,9 @@ const Project = () => {
       .then((data) => {
         setProject(data)
         setShowProjectForm(false)
-        //message
+        // message
+        setMessage('Project updated sucefully')
+        setType('sucess')
       })
       .catch((err) => console.log((err)))
   }
@@ -36,6 +41,8 @@ const Project = () => {
 
   const [project, setProject] = useState([]);
   const [showProjectForm, setShowProjectForm] = useState();
+  const [message, setMessage] = useState();
+  const [type, setType] = useState();
 
   useEffect(() => {
     setTimeout(() => {
@@ -61,6 +68,7 @@ const Project = () => {
             className='border-2 border-black p-1'>
             {!showProjectForm ? 'Edit project' : 'Close'}
           </button>
+          {message && <Message type={type} />}
         </span>
         {project.name ?
           <div className='border-2 border-black p-4 bg-white text-black flex flex-col gap-2 w-1/2'>
